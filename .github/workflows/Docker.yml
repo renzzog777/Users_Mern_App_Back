@@ -28,7 +28,7 @@ jobs:
 
       - name: Save version
         id: version
-        run: echo ::set-output name=tag::$(echo $(node -p -e "require('./package.json').version"))
+        run: echo ::set-output name=tag::$(echo $(node -p -e "require('backend/package.json').version"))
 
       - name: Increase version
         run: npm version patch
