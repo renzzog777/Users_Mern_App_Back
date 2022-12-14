@@ -21,6 +21,6 @@ app.get('/', (req, res)=>{
 })
 
 //Server
-app.listen(5000, function(){
+app.listen(80, function(){
     console.log('El servidor NODE esta corriendo Molto Bene')
 })
