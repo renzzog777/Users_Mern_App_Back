@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [ "develop" ]
+
+  workflow_dispatch:
+
+jobs:
+  Docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+      - name: Dependecies
+        run: npm ci
+
+      - name: Permissions for Build
+        run: chmod +x build.sh
+
+      - name: Build
+        run: npm run build
+
+      - name: Login to DockerHub Registry
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+      - name: Build Docker image
+        run: docker build . --file Dockerfile -t renzzog77/backend_Dev
+
+      - name: Push to Docker Hub
+        run: docker push renzzog77/backend_Dev:latest
+#test 2
