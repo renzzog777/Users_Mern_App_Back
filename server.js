@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({extended:'true'}))
 app.use('/api/usuario', rutausuario)
 
 app.get('/', (req, res)=>{
-    res.end('Bienvenidos al servidor Backend')
+    res.end('Bienvenidos al servidor Backend Again')
 })
 
 //Server
