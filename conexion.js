@@ -1,6 +1,6 @@
 //COnnect to the mongodb nosql database.
 const mongoose = require('mongoose');
-mongoose.connect(`mongodb+srv://renzzog77:Ci2LfHA3Jxm4u7jr@movies.gybov2z.mongodb.net/?retryWrites=true&w=majority`);
+mongoose.connect(`mongodb+srv://${{ secrets.MONGO_USERNAME }}:${{ secrets.MONGO_PASSWORD }}@movies.gybov2z.mongodb.net/?retryWrites=true&w=majority`);
 
 const objetobd = mongoose.connection
 
